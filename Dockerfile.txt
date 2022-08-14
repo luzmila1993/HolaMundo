@@ -1,0 +1,9 @@
+FROM cp.icr.io/cp/appc/ace:12.0.4.0-r2@sha256:147f835b2686bd93d97605e126532548937f6de9cb1f2e75448f196ec6512024
+USER root
+COPY holamundo /home/aceuser/bars
+RUN  chmod -R ugo+rwx /home/aceuser
+USER 1000
+RUN ace_compile_bars.sh
+USER root
+RUN  chmod -R ugo+rwx /home/aceuser
+USER 1000
